@@ -31,15 +31,15 @@ class trains{
         void halt() {
             std::cout << "The train is halted at the station " << '\n';
         }
+
+        void gettingPassenger() {
+                std::cout << "The train is getting passenger in station " << stationName << '\n';
+        }
 };
 
 class trainLocal : public trains {
 
-    void gettingPassenger(std::string stationName){
-        char arrived = 'Y';
-        std::cout << "The train is getting passenger in station " << stationName << '\n';
-    }
-
+	;
 
 };
 
@@ -62,8 +62,9 @@ int main() {
     std::string no("no");
     char Y('Y');
     char N('N');
+
     std::string getCustomerTicket;
-    std::string customerStationpicked;
+    std::string customerStationPicked;
 
     customerStationSelected customerStations = stationLocal;
 
@@ -71,16 +72,16 @@ int main() {
     stationInfo station2;
 
 
-        station1. stationName = "Waylt";
-        station1. trainName = "Fly";
+        station1. stationName = "WDR 2"; // Local station
+        station1. trainName = "Crescent";
         station1. trainSize = 46;
-        station1. stationRoute = "Cebu - Iloilo";
+        station1. stationRoute = "Sydney - New South Wales to Cairns";
 
 
-            station2. stationName = "Loeq";
-            station2. trainName = "Cloy";
+            station2. stationName = "SWR 3"; // Foreign station
+            station2. trainName = "Transilien";
             station2. trainSize = 34;
-            station2. stationRoute = "New york - Los angeles";
+            station2. stationRoute = "Nashville - Tennessee to New Orleans";
 
         trainLocal stationLocalBoard;
         trainLocal trainLocal;
@@ -89,15 +90,18 @@ int main() {
         trainForeign trainForeign;
 
         
-        stationLocalBoard. stationName = "Waylt";
+        stationLocalBoard. stationName = "Metro Local";
         stationLocalBoard. gettingUsed = true;
         stationLocalBoard. arrived = Y;
 
-        stationForeignBoard. stationName = "Loeq";
+        stationForeignBoard. stationName = "Metro Foreign";
         stationForeignBoard. gettingUsed = true;
         stationForeignBoard. arrived = N;
 
+
+
                 std::cout << "{------------------------::: :: STATION BOARD :: :::------------------------}\n" << '\n' << '\n';
+
                 std::cout << "                            " << "  ( Local Stations  )     " << "     " << '\n' << '\n';
                     printStationTrainBoard(stationLocalBoard);
                      std::cout << '\n' << '\n';
@@ -107,27 +111,31 @@ int main() {
 
                 std::cout << "{---------------------------------------------------------------------------}\n" << '\n' << '\n';
 
-        std::cout << "Choose a station to get ticket. (Local | Foreign)\n" << '\n';
-        
+                // stationLocalBoard. gettingPassenger();
+                // stationForeignBoard. gettingPassenger();
+
+
+
+                	std::cout << "Choose a station to get ticket. (L | F)\n" << '\n';
+                	std::cin >> customerStationPicked;
+
+
 
 
 
     switch(customerStations){
 
-        case stationLocal:                         
-                                std::cout << "Returning? " << '\n';
+        case stationLocal:
+        						std::cout << "Returning? " << '\n';
                                 std::cout << "Answer: ";
                                     std::cin >> getCustomerTicket;
 
                                 if(getCustomerTicket == "yes" || getCustomerTicket == yes) {
                                     ticketPrint(station1);
-
-                                        std::cout << trainLocal. gettingUsed << '\n';
-                                        trainForeign. moving();
                                 }
                                 
                                 else if(getCustomerTicket == "no" || getCustomerTicket == no) {
-                                    stationDestinations(station1, "Iloilo - Cebu");
+                                    stationDestinations(station1, "New South Wales to Cairns - Sydney");
                                     ticketPrint(station1);
 
                                 }
@@ -140,39 +148,32 @@ int main() {
 
                                 if(getCustomerTicket == "yes" || getCustomerTicket == yes) {
                                     ticketPrint(station2);
-
-                                    std::cout << trainForeign. gettingUsed << '\n';
-                                    trainForeign. moving();
                                 }
                                 
                                 else if(getCustomerTicket == "no" || getCustomerTicket == no) {      
-                                    stationDestinations(station2, "Los angeles - New york");
+                                    stationDestinations(station2, "Tennessee to New Orleans - Nashville");
                                     ticketPrint(station2);
 
                                 }
         break;
 
     }
-
-
         
-         
     return 0;
-}
-
+};
 
 void printStationTrainBoard(trainLocal &changeBoard) {
     
-        std::cout << "                       Station Name: " << changeBoard. stationName << '\n';
-        std::cout << "                       Operational: " <<changeBoard. gettingUsed << '\n';
-        std::cout << "                        Arrived: " << changeBoard. arrived << '\n';
+        std::cout << "                             > Station Name: " << changeBoard. stationName << '\n';
+        std::cout << "                             >  Operational: " <<changeBoard. gettingUsed << '\n';
+        std::cout << "                             >      Arrived: " << changeBoard. arrived << '\n';
             
 }
 void printStationTrainBoard(trainForeign &changeBoard) {
     
-        std::cout << "                       Station Name: " << changeBoard. stationName << '\n';
-        std::cout << "                       Operational: " <<changeBoard. gettingUsed << '\n';
-        std::cout << "                        Arrived: " << changeBoard. arrived << '\n';
+        std::cout << "                             > Station Name: " << changeBoard. stationName << '\n';
+        std::cout << "                             >  Operational: " <<changeBoard. gettingUsed << '\n';
+        std::cout << "                             >      Arrived: " << changeBoard. arrived << '\n';
       
 }
 void ticketPrint(stationInfo &stations) {
